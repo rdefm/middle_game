@@ -1,0 +1,94 @@
+import { Decision } from '@/content/_types';
+
+export const inboxYemi: {
+  sceneId: string;
+  personCard: {
+    initial: string;
+    avatarColour: string;
+    name: string;
+    role: string;
+    bio: string;
+  };
+  emailMeta: {
+    from: string;
+    to: string;
+    date: string;
+    re: string;
+  };
+  emailBody: string;
+  policyBox: {
+    heading: string;
+    body: string;
+  };
+  footnote: string;
+  decision: Decision;
+} = {
+  sceneId: 'w2-inbox-yemi',
+  personCard: {
+    initial: 'Y',
+    avatarColour: 'green',
+    name: 'Yemi Adeyemi',
+    role: 'Junior Analyst, Customer Success · Day 2',
+    bio: "22. First job. Arrived on Monday in a blazer she has since quietly removed. Has asked six questions today, all of them good. Has not complained once about the fact that her laptop still says \"Configuring — do not turn off\" and has been saying that since 9:30 yesterday.",
+  },
+  emailMeta: {
+    from: 'yemi.adeyemi@pembrook.com',
+    to: 'jordan.ellis@pembrook.com',
+    date: 'Tuesday, 10:14',
+    re: 'Quick question (sorry!)',
+  },
+  emailBody: `Hi Jordan,
+
+Thank you so much for showing me around yesterday, it was really helpful.
+
+Quick question — I was given a copy of the Employee Handbook as part of my welcome pack and I've been reading through it. I have a few questions about it, mainly:
+
+1. Section 1.1 says it was written by someone called D. Hartley who describes himself as "former." Is there a more current version I should be reading?
+
+2. Page 47 has a Post-it note that says "not this one. trust your gut." Is that meant to be there?
+
+3. Some of the policies reference things that haven't happened yet (there's a note in §6.2 that says "and yes, the car park situation in 2021 will be exactly as bad as you think"). Is this normal?
+
+I don't want to be difficult! I just want to make sure I'm reading the right documents.
+
+Thanks,
+Yemi`,
+  policyBox: {
+    heading: 'Policy §3.1 — Onboarding, cont. (D. Hartley, 2019)',
+    body: `"The new starter's first week should include: a team introduction, a role overview, a systems walkthrough, and a clear point of contact for questions. If any of these have not happened because the person responsible for onboarding was not given any onboarding training, I would like to state, for the record, that I flagged this as a risk in the 2018 HR review. The flagged risk is on page 34 of that document. The document is in a SharePoint folder that has since been archived. I know where it is. I cannot help you access it.
+
+Regarding the Post-it on page 47: yes, it is meant to be there. — D.H."`,
+  },
+  footnote:
+    'Yemi\'s laptop has now been "Configuring" for 26 hours. Dave from IT says it\'s "nearly there." This is the same thing Dave said about Craig\'s monitor in March. Craig got a new monitor in July.',
+  decision: {
+    key: 'yemi_onboarding',
+    prompt: 'How do you respond to Yemi?',
+    options: [
+      {
+        value: 'honest',
+        label: 'Be honest about the handbook situation',
+        variant: 'approve',
+        stampText: 'Honest',
+        scoreDeltas: {
+          morale: 10,
+          leadership: 0,
+          policy: 0,
+          ops: 0,
+        },
+      },
+      {
+        value: 'deflect',
+        label: 'Tell her it\'s all fine, updated version coming soon',
+        variant: 'deny',
+        stampText: 'Deflected',
+        scoreDeltas: {
+          morale: -8,
+          leadership: 5,
+          policy: 0,
+          ops: 0,
+        },
+      },
+    ],
+  },
+};
